@@ -30,6 +30,7 @@ class TaskDetailViewController: UIViewController {
         // TODO: Register custom annotation view
 
         // TODO: Set mapView delegate
+        mapView.delegate = self
 
         // UI Candy
         mapView.layer.cornerRadius = 12
@@ -114,8 +115,23 @@ class TaskDetailViewController: UIViewController {
 
     func updateMapView() {
         // TODO: Set map viewing region and scale
+        // Make sure the task has image location.
+        guard let imageLocation = task.imageLocation else { return }
+
+        // Get the coordinate from the image location. This is the latitude / longitude of the location.
+        // https://developer.apple.com/documentation/mapkit/mkmapview
+        let coordinate = imageLocation.coordinate
+
+        // Set the map view's region based on the coordinate of the image.
+        // The span represents the maps's "zoom level". A smaller value yields a more "zoomed in" map area, while a larger value is more "zoomed out".
+        let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        mapView.setRegion(region, animated: true)
 
         // TODO: Add annotation to map view
+        // Add an annotation to the map view based on image location.
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
     }
 }
 
@@ -173,6 +189,22 @@ extension TaskDetailViewController: PHPickerViewControllerDelegate {
 }
 
 // TODO: Conform to MKMapKitDelegate + implement mapView(_:viewFor:) delegate method.
+extension TaskDetailViewController: MKMapViewDelegate {
+    // Implement mapView(_:viewFor:) delegate method.
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+
+        // Dequeue the annotation view for the specified reuse identifier and annotation.
+        // Cast the dequeued annotation view to your specific custom annotation view class, `TaskAnnotationView`
+        // 💡 This is very similar to how we get and prepare cells for use in table views.
+        guard let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: TaskAnnotationView.identifier, for: annotation) as? TaskAnnotationView else {
+            fatalError("Unable to dequeue TaskAnnotationView")
+        }
+
+        // Configure the annotation view, passing in the task's image.
+        annotationView.configure(with: task.image)
+        return annotationView
+    }
+}
 
 // Helper methods to present various alerts
 extension TaskDetailViewController {
