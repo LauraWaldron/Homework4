@@ -28,6 +28,8 @@ class TaskDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // TODO: Register custom annotation view
+        // Register custom annotation view
+        mapView.register(TaskAnnotationView.self, forAnnotationViewWithReuseIdentifier: TaskAnnotationView.identifier)
 
         // TODO: Set mapView delegate
         mapView.delegate = self
