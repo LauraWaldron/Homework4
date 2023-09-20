@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wg7-xV-89h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wg7-xV-89h">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tasks-->
+        <!--Photo Scavenger Hunt-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="TaskListViewController" customModule="lab_task_squirrel" customModuleProvider="target" sceneMemberID="viewController">
@@ -80,7 +81,7 @@
                             <constraint firstItem="Q4w-ie-GaD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tqj-PY-kbK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Tasks" id="BEp-bB-g30">
+                    <navigationItem key="navigationItem" title="Photo Scavenger Hunt" id="BEp-bB-g30">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="mUF-lW-14o">
                             <connections>
                                 <segue destination="Wks-lt-YIn" kind="presentation" identifier="ComposeSegue" id="HQw-jc-QaX"/>
@@ -213,12 +214,12 @@
             </objects>
             <point key="canvasLocation" x="233.84615384615384" y="13.507109004739336"/>
         </scene>
-        <!--New Task-->
+        <!--New Item-->
         <scene sceneID="Ioe-a1-6Ta">
             <objects>
                 <viewController id="fZK-XV-ZSw" customClass="TaskComposeViewController" customModule="lab_task_squirrel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qrs-jQ-4tq">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="e1a-5z-s8t">
@@ -246,7 +247,7 @@
                             <constraint firstItem="e1a-5z-s8t" firstAttribute="leading" secondItem="lzg-S3-CuB" secondAttribute="leading" constant="16" id="zSn-du-kw5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New Task" id="vWC-DD-cn2">
+                    <navigationItem key="navigationItem" title="New Item" id="vWC-DD-cn2">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="fmg-4p-f0B">
                             <connections>
                                 <action selector="didTapCancelButton:" destination="fZK-XV-ZSw" id="tc2-q5-u9F"/>
